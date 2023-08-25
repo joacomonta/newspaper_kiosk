@@ -1,0 +1,44 @@
+<!-- Joaquin Montañez -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            background-color: lightblue;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diarios</h1>
+    <iframe src="https://www.abc.com.py/" frameborder="0" width="854px" height="480px" id="pantalla"></iframe>
+    <br>
+    <button id="anterior">Anterior</button>
+    <button id="siguiente">Siguiente</button>
+</body>
+<script>
+    const diarios = ["https://www.abc.com.py/", "https://www.ultimahora.com/", "https://www.lanacion.com.py/"];
+
+    let posActual = 0;
+
+    const pantalla = document.getElementById("pantalla");
+    const anterior = document.getElementById("anterior");
+    const siguiente = document.getElementById("siguiente");
+
+    anterior.addEventListener("click", () => {
+        posActual = (posActual - 1 + diarios.length) % diarios.length; 
+        pantalla.src = diarios[posActual];
+    });
+
+    siguiente.addEventListener("click", () => {
+        posActual = (posActual + 1) % diarios.length;
+        pantalla.src = diarios[posActual];
+    });
+</script>
+</html>
